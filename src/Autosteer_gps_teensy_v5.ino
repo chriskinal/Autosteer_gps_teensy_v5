@@ -31,7 +31,7 @@
 #define SerialRTK Serial3               //RTK radio
 HardwareSerial* SerialGPS = &Serial7;   //Main postion receiver (GGA) (Serial2 must be used here with T4.0 / Basic Panda boards - Should auto swap)
 HardwareSerial* SerialGPS2 = &Serial2;  //Dual heading receiver 
-HardwareSerial* SerialGPSTmp = NULL;
+HardwareSerial* SerialGPSTmp;
 //HardwareSerial* SerialAOG = &Serial;
 
 const int32_t baudAOG = 115200;
@@ -83,6 +83,18 @@ uint32_t gpsReadyTime = 0;        //Used for GGA timeout
 // #define GPSGREEN_LED 21
 // #define AUTOSTEER_STANDBY_LED 38
 // #define AUTOSTEER_ACTIVE_LED 39
+
+void errorHandler();
+void GGA_Handler();
+void VTG_Handler();
+void autosteerSetup();
+void EthernetStart();
+void udpNtrip();
+void BuildNmea();
+void relPosDecode();
+void readBNO();
+void autosteerLoop();
+void ReceiveUdp();
 
 /*****************************************************************/
 
